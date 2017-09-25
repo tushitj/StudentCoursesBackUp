@@ -49,4 +49,21 @@ public class Node implements ObserverI, SubjectI, Cloneable {
 		courses.remove(course);
 		
 	}
+	@Override
+	public int hashCode() {
+		return id;
+	}
+	@Override
+	protected Object clone() {	
+		Node clone = null;
+		try {
+			clone = (Node)super.clone();
+			clone.id = this.id;
+			clone.courses = new ArrayList<>(this.courses);
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}		
+		return clone;
+		
+	}
 }
