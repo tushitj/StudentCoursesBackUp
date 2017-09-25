@@ -1,5 +1,7 @@
 package studentCoursesBackup.myTree;
 
-public class SubjectI {
-
+interface SubjectI {
+	void subscribeObserver(ObserverI observerI);
+	void notifyAllObservers(ObserverI.Operation op,String course);
+	void unsubscribeObserver(ObserverI observerI);
 }
