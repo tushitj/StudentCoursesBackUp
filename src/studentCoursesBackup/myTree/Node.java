@@ -1,7 +1,6 @@
 package studentCoursesBackup.myTree;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
@@ -52,7 +51,13 @@ public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
 	private void addCourse(String course) {
 		if(null == courses)
 			courses = new ArrayList<>();
-		courses.add(course);
+		if(course.charAt(0) > 'K'){
+			//Do Nothing
+		}
+		else{
+			courses.add(course);
+		}
+		
 
 	}
 
