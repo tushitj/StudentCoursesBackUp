@@ -11,8 +11,8 @@ public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
 	private List<String> courses;
 
 	public Node(int idIn, String courseIn) {
-		left = right = null;
-		this.id = idIn;
+		setLeft(setRight(null));
+		this.setId(idIn);
 		addCourse(courseIn);
 	}
 
@@ -69,7 +69,7 @@ public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
 
 	@Override
 	public int hashCode() {
-		return id;
+		return getId();
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
 		Node clone = null;
 		try {
 			clone = (Node) super.clone();
-			clone.id = this.id;
+			clone.setId(this.getId());
 			clone.courses = new ArrayList<>(this.courses);
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
@@ -87,12 +87,37 @@ public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
 
 	@Override
 	public int compareTo(Node o) {
-		if (id < o.id) {
+		if (getId() < o.getId()) {
 			return -1;
-		} else if (id > o.id) {
+		} else if (getId() > o.getId()) {
 			return 1;
 		}
 		return 0;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Node getLeft() {
+		return left;
+	}
+
+	public void setLeft(Node left) {
+		this.left = left;
+	}
+
+	public Node getRight() {
+		return right;
+	}
+
+	public Node setRight(Node right) {
+		this.right = right;
+		return right;
 	}
 
 }
