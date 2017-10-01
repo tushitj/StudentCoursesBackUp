@@ -17,8 +17,8 @@ public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
 	}
 
 	@Override
-	public void subscribeObserver(ObserverI observerI) {
-		observerList.add(observerI);
+	public void subscribeObserver(ObserverI observer) {
+		observerList.add(observer);
 
 	}
 
@@ -48,7 +48,7 @@ public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
 		}
 	}
 
-	private void addCourse(String course) {
+	public void addCourse(String course) {
 		if(null == courses)
 			courses = new ArrayList<>();
 		if(course.charAt(0) > 'K'){
@@ -61,7 +61,7 @@ public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
 
 	}
 
-	private void removeCourse(String course) {
+	public void removeCourse(String course) {
 		if(null != courses)
 			courses.remove(course);
 
@@ -73,7 +73,7 @@ public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
 	}
 
 	@Override
-	protected Object clone() {
+	public Node clone() {
 		Node clone = null;
 		try {
 			clone = (Node) super.clone();

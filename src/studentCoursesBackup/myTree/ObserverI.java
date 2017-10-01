@@ -1,6 +1,6 @@
 package studentCoursesBackup.myTree;
 
-interface ObserverI {
+public interface ObserverI {
 	enum Operation {INSERT, DELETE};
 	void update(Operation op, String course);
 }
