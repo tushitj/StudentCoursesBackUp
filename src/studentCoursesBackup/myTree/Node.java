@@ -1,6 +1,7 @@
 package studentCoursesBackup.myTree;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
@@ -8,7 +9,7 @@ public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
 	private Node left;
 	private Node right;
 	private int id;
-	private List<String> courses;
+	private HashSet<String> courses;
 
 	public Node(int idIn, String courseIn) {
 		setLeft(setRight(null));
@@ -50,7 +51,7 @@ public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
 
 	public void addCourse(String course) {
 		if(null == courses)
-			courses = new ArrayList<>();
+			courses = new HashSet<>();
 		if(course.charAt(0) > 'K'){
 			//Do Nothing
 		}
@@ -78,7 +79,7 @@ public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
 		try {
 			clone = (Node) super.clone();
 			clone.setId(this.getId());
-			clone.courses = new ArrayList<>(this.courses);
+			clone.courses = new HashSet<>(this.courses);
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
 		}
@@ -118,6 +119,24 @@ public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
 	public Node setRight(Node right) {
 		this.right = right;
 		return right;
+	}
+	
+	@Override
+	public String toString(){
+		return String.format("The id is %d list : %s", getId() ,courses.size() > 0 ? beautifyStringList(courses.toString()) :"--No course enrolled--");
+	}
+	private String beautifyStringList(String str){
+		return str.substring(1,str.length()-1);
+		
+	}
+
+	public String getCourses() {
+		StringBuilder sbr = new StringBuilder();
+		for(String str : courses){
+			sbr.append(str);
+			sbr.append(" ");
+		}
+		return sbr.toString();
 	}
 
 }

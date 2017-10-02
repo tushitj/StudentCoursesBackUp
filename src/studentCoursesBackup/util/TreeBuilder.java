@@ -3,6 +3,7 @@ package studentCoursesBackup.util;
 import studentCoursesBackup.myTree.Node;
 import studentCoursesBackup.myTree.ObserverI;
 import studentCoursesBackup.myTree.ObserverI.Operation;
+
 public class TreeBuilder {
 	private Node root;
 	private TreeBuilder backupTree1;
@@ -11,18 +12,23 @@ public class TreeBuilder {
 	public TreeBuilder getBackupTree1() {
 		return backupTree1;
 	}
+	
 
-	public void setBackupTree1(TreeBuilder backupTree1In) {
-		this.backupTree1 = backupTree1In;
+	public void setBackupTree1(TreeBuilder backupTree1) {
+		this.backupTree1 = backupTree1;
 	}
+
+
+	public void setBackupTree2(TreeBuilder backupTree2) {
+		this.backupTree2 = backupTree2;
+	}
+
 
 	public TreeBuilder getBackupTree2() {
 		return backupTree2;
 	}
 
-	public void setBackupTree2(TreeBuilder backupTree2In) {
-		this.backupTree2 = backupTree2In;
-	}
+	
 
 	public TreeBuilder() {
 		root = null;
@@ -54,13 +60,12 @@ public class TreeBuilder {
 				
 			}
 		}
-		return course;
+		return "Course added successfuly";
 		
 	}
 
 	private void insertNodeIntoTree(Node node) {
-		root = insert(root,node);
-		
+		root = insert(root,node);	
 	}
 
 	private Node insert(Node curr, Node node) {
@@ -94,6 +99,32 @@ public class TreeBuilder {
 			found = searchRec(node.getRight(), id);
 		}
 		return found;
+	}
+	
+	public String removeCourseFromNode(int id,String courseName){
+		Node node = searchNode(id);
+		if(node == null){
+			return null;
+		}
+		else{
+			node.removeCourse(courseName);
+			node.notifyAllObservers(Operation.DELETE, courseName);
+		}
+		return "Course removed Successfully";
+	}
+	
+	public void print(Results result){
+		printInOrder(result,root);
+	}
+	
+	public void printInOrder(Results result , Node node){
+		if(node!=null){
+			
+			printInOrder(result, node.getLeft());
+			result.storeNewResult(node.toString());
+			printInOrder(result, node.getRight());
+			
+		}
 	}
 
 
