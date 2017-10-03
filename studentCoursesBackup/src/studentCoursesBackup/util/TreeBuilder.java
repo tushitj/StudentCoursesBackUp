@@ -66,7 +66,7 @@ public class TreeBuilder {
 		if(course != null && id>999 && id<10000){
 			if((node = searchNode(id)) !=null){
 				node.addCourse(course);
-				node.notifyAllObservers(Operation.INSERT, course);
+				node.notifyAll(Operation.INSERT, course);
 			}else{
 				node = new Node(id,course);
 				insertNodeIntoTree(node);
@@ -162,7 +162,7 @@ public class TreeBuilder {
 		}
 		else{
 			node.removeCourse(courseName);
-			node.notifyAllObservers(Operation.DELETE, courseName);
+			node.notifyAll(Operation.DELETE, courseName);
 		}
 		return "Course removed Successfully";
 	}

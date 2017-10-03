@@ -53,7 +53,7 @@ public class Node implements ObserverI, SubjectI, Cloneable, Comparable<Node> {
 	 * A function that notifies the observers to pull the data.
 	 */
 	@Override
-	public void notifyAllObservers(Operation op, String course) {
+	public void notifyAll(Operation op, String course) {
 		for (ObserverI o : observerList) {
 			o.update(op, course);
 		}
