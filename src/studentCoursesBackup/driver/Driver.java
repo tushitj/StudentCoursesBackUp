@@ -1,11 +1,21 @@
 package studentCoursesBackup.driver;
 
-import studentCoursesBackup.myTree.Node;
 import studentCoursesBackup.util.FileProcessor;
 import studentCoursesBackup.util.Results;
 import studentCoursesBackup.util.TreeBuilder;
 
+/**
+ * Driver class that runs the code.
+ * It creates objects of TreeBuilder and Results and FileProcessor
+ * @author tushitjain
+ *
+ */
 public class Driver {
+	/**
+	 * A function that checks the valid file names
+	 * @param fileArrs: array of string of filenames
+	 * @return true if all the arguments are correct filenames
+	 */
 	public static boolean checkFile(String... fileArrs) {
 		boolean flag = true;
 		for (String filePath : fileArrs)
@@ -13,6 +23,10 @@ public class Driver {
 		return flag;
 	}
 
+	/**
+	 * main function
+	 * @param args: Command line arguments
+	 */
 	public static void main(String[] args) {
 		int argLength = args.length;
 		if (argLength != 5 || !checkFile(args)) {
@@ -56,18 +70,18 @@ public class Driver {
 				String[] arr = str.split(":");
 				int buId = Integer.parseInt(arr[0]);
 				String courseName = arr[1];
-				String s = tree1.insertCourse(buId, courseName);
+				tree1.insertCourse(buId, courseName);
 				result.storeNewResult(buId +" "+courseName);
 
 			}
 
 			str = null;
-			result.storeNewResult("Delete operation");
+			result.storeNewResult("\n\nDelete operation");
 			while ((str = delete.readLine()) != null) {
 				String[] arr = str.split(":");
 				int buId = Integer.parseInt(arr[0]);
 				String courseName = arr[1];
-				String s = tree1.removeCourseFromNode(buId, courseName);
+				tree1.removeCourseFromNode(buId, courseName);
 				result.storeNewResult(buId +" "+courseName);
 			}
 
@@ -83,9 +97,7 @@ public class Driver {
 			backup_tree2.print(resultBackup2);
 			//resultBackup2.writeToStdout("");
 			resultBackup2.writeToFile(outputFile3);
-			
-			
-
+		
 		} catch (Exception ex) {
 			System.out.println(ex);
 			System.exit(1);

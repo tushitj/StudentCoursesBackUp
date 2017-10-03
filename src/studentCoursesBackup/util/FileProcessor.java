@@ -6,11 +6,20 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+/**
+ * FileProcessor Class that os used to process the input and output files.
+ * @author tushitjain
+ *
+ */
 public class FileProcessor {
 	private String fileName;
 	BufferedReader br;
 	FileReader fin;
 
+	/**
+	 * Constructor that initalizes file by filename
+	 * @param fileNameIn : input filename from Driver.Main
+	 */
 	public FileProcessor(String fileNameIn) {
 		if(fileNameIn != null && (fileNameIn.trim().length() > 0)){
 			fileName = fileNameIn;

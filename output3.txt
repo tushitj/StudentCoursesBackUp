@@ -1,5 +1,1 @@
-The id is 1682 list : --No course enrolled--
-The id is 2642 list : A, B, C
-The id is 3991 list : B
-The id is 4586 list : C
-The id is 6109 list : D
+The id is 1000 list : --No course enrolled--

@@ -1,6 +1,10 @@
 package studentCoursesBackup.util;
 
-
+/**
+ * FileDisplayInterface that is to be implemented by Result
+ * @author tushitjain
+ *
+ */
 public interface FileDisplayInterface {
 	/**
 	 * A function that will write the string to the file

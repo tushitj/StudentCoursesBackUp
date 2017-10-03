@@ -1,16 +1,22 @@
 package studentCoursesBackup.util;
 
-
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * Results class that stores the results of each tree in its object
+ * @author tushitjain
+ *
+ */
 public class Results implements FileDisplayInterface, StdoutDisplayInterface {
 	private PrintWriter out;
 	private StringBuilder sb;
 	
+	/**
+	 * Results constructor that creates a stringbuilder object to be used.
+	 */
 	public Results(){
 		sb = new StringBuilder();
 	}
