@@ -10,7 +10,8 @@ ant -buildfile src/build.xml all
 -----------------------------------------------------------------------
 ## To run by specifying arguments from command line 
 ## We will use this to run your code
-ant -buildfile src/build.xml run -Darg0=FIRST -Darg1=SECOND -Darg2=THIRD -Darg3=FOURTH -Darg4=FIFTH
+ant -buildfile src/build.xml run -Darg0=FIRST -Darg1=SECOND -Darg2=THIRD
+	 -Darg3=FOURTH -Darg4=FIFTH
 
 -----------------------------------------------------------------------
 
@@ -32,9 +33,14 @@ offense.
 
 -----------------------------------------------------------------------
 
-Provide justification for Data Structures used in this assignment in
-term of Big O complexity (time and/or space)
-
+I have used Binary Search tree for this project.
+BST allow fast lookup, addition and removal of items, and can be used 
+to implement either dynamic sets of items, or lookup tables that allow 
+finding an item by its key i.e. buId in our case.
+Insertion : O(log n)
+Deletion : O(height) i.e O(log n)
+Traverasal : O(n)
+Search : O(height) i.e O(log n)
 
 -----------------------------------------------------------------------
 
